@@ -1,0 +1,11 @@
+history -r ../.history_$1
+env | grep JAVA
+java AtomicLongTest 10000
+java AtomicLongTest 10001
+java AtomicLongTest 10002
+java AtomicLongTest 20000
+java AtomicLongTest 20009
+jdb -launch AtomicLongTest 20000
+java -XX:+PrintCompilation AtomicLongTest 20000 | egrep "^OK|^Error|update"
+gdb java
+history -w .history_jit_bug

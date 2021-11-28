@@ -1,0 +1,2 @@
+/share/OpenJDK/jdk9-hs-comp/hotspot/src/share/tools/IdealGraphVisualizer/my_igv.sh
+java -XX:CompileCommand="option AtomicLongTest.update intx IGVPrintLevel 4" -XX:CompileCommand="option AtomicLongTest.update PrintIdealGraph" -XX:+PrintIdealGraph AtomicLongTest 10001

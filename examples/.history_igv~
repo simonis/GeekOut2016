@@ -1,0 +1,2 @@
+/share/OpenJDK/jdk9-hs-comp/hotspot/src/share/tools/IdealGraphVisualizer/my_igv.sh
+java -XX:+PrintCompilation -XX:+PrintInlining -XX:+PrintIdealGraph -XX:CompilerDirectivesFile=../igv/comp_direct.txt org.simonis.Random 1000000 2>&1 | less

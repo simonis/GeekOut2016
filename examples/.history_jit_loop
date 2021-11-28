@@ -1,0 +1,23 @@
+history -r ../.history_$1
+env | grep JAVA
+java AtomicLongTest 10000
+java AtomicLongTest 10001
+java -Xint IntLoop 10
+java -Xint IntLoop 100
+java -XX:+PrintCompilation IntLoop 100
+java -XX:+PrintCompilation IntLoop 100000000
+java -Xint LongLoop 10
+java -Xint LongLoop 100
+java -Xint LongLoop 1000
+java -XX:+PrintCompilation LongLoop 10
+java -XX:+PrintCompilation LongLoop 100
+java -XX:+PrintCompilation LongLoop 1000
+java -XX:+PrintCompilation -XX:CompileCommand="print IntLoop::loop" IntLoop 10
+java -XX:+PrintCompilation -XX:CompileCommand="print LongLoop::loop" LongLoop 10 | less
+which java
+history 
+history -w /tmp/h.txt
+less /tmp/h.txt 
+la
+ls -la 
+history -w .history_jit_loop

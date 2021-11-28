@@ -1,0 +1,10 @@
+emacs -nw /share/OpenJDK/jdk9-hs-comp/hotspot/src/cpu/x86/vm/x86_64.ad
+grep -r ADDQ /share/OpenJDK/jdk9-hs-comp/hotspot/src/ 
+java -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n AtomicLongTest 200000000
+java -XX:+PrintCompilation AtomicLongTest 20000 | egrep "^OK|^Error|update"
+jdb -launch AtomicLongTest 20000
+java AtomicLongTest 20009
+java AtomicLongTest 20000
+java AtomicLongTest 10002
+java AtomicLongTest 10001
+java AtomicLongTest 10000

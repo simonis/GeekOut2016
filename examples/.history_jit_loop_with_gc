@@ -1,0 +1,24 @@
+history -r ../.history_$1
+env | grep JAVA
+java -XX:+PrintCompilation -verbose:gc LongLoopWithGC 100
+java -XX:+PrintCompilation -verbose:gc LongLoopWithGC 1000
+java -XX:+PrintCompilation -verbose:gc LongLoopWithGC 10000
+env | grep JAVA
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 1000
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 10000
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n 100000
+java -XX:+PrintCompilation -verbose:gc -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n IntLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n LongLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc -agentlib:jdwp=transport=dt_socket,address=localhost:8000,server=y,suspend=n LongLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n LongLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 100000
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 100000
+c 
+la core
+ls -la core
+ls -la
+rm hs_err_pid17370.log 
+java -XX:+PrintCompilation -verbose:gc IntLoopWithGC 10000
+gdb java
+history -w .history_jit_loop_with_gc

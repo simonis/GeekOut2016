@@ -1,0 +1,10 @@
+history -r ../.history_$1
+history 
+java -XX:+PrintInterpreter HelloWorld | less
+java -XX:+TraceBytecodes HelloWorld | less
+gdb java
+env | grep JAVA
+fg
+which java
+history 
+history -w .history_interpreter
